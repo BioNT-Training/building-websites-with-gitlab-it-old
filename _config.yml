@@ -10,11 +10,11 @@
 carpentry: none
 
 # Overall title for pages.
-title: "Building Websites with Jekyll and GitHub/GitLab"
+title: "Building Websites with GitLab"
 
 # Life cycle stage of the lesson
 # possible values: "pre-alpha", "alpha", "beta", "stable"
-life_cycle: "pre-alpha"
+life_cycle: "alpha"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -27,7 +27,7 @@ kind: "lesson"
 repository: "grp-bio-it-workshops/building-websites-with-jekyll-and-github-or-gitlab"
 
 # Email address, no mailto:
-email: "toby.hodges@embl.de"
+email: "lisanna.paladin@embl.de"
 
 # Sites.
 amy_site: "https://amy.carpentries.org/workshops"
