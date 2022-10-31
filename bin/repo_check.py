@@ -23,7 +23,7 @@ except ImportError:
 P_GIT_REMOTE = re.compile(r'upstream\s+[^:]+:([^/]+)/([^.]+)\.git\s+\(fetch\)')
 
 # Repository URL format string.
-F_REPO_URL = 'https://github.com/{0}/{1}/'
+F_REPO_URL = 'https://git.embl.de/{0}/{1}/'
 
 # Pattern to match repository URLs => (user name, project name)
 P_REPO_URL = re.compile(r'https?://github\.com/([^.]+)/([^/]+)/?')
