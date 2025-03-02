@@ -10,7 +10,7 @@
 carpentry: none
 
 # Overall title for pages.
-title: "Building Websites with GitLab"
+title: "Costruire siti web con GitLab"
 
 # Life cycle stage of the lesson
 # possible values: "pre-alpha", "alpha", "beta", "stable"
@@ -24,7 +24,7 @@ life_cycle: "alpha"
 kind: "lesson"
 
 
-repository: "grp-bio-it-workshops/building-websites-with-jekyll-and-github-or-gitlab"
+repository: "BioNT-Training/building-websites-with-gitlab-it"
 
 # Email address, no mailto:
 email: "lisanna.paladin@embl.de"

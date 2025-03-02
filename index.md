@@ -1,74 +1,78 @@
 ---
 layout: lesson
-root: .  # Is the only page that doesn't follow the pattern /:path/index.html
-permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
+root: .
+permalink: index.html
 ---
 
-> ## Prerequisites
-> Before following this lesson, learners should ideally be able to:
->
-> 1. create a project on [GitLab][gitlab] / [EMBL GitLab][embl-gitlab].
-> 1. clone a local copy of a project with Git, add and commit modified files, and push/pull changes between local and remote repositories.
-> 1. execute commands in the shell.
->
-> None of the prerequisite above is absolutely necessary to follow the lesson.
-> They will, however, be necessary to efficiently manage the website development from your
-> laptop and test how it looks before creating official versions.
->
-> If you'd like to learn any of the skills listed above,
-> the [Software Carpentry][swc] lessons on
-> [the Shell][swc-shell]
-> and [Git][swc-git] are a good place to start.
+
+> ## Prerequisiti
+> Prima di seguire questa lezione, gli studenti dovrebbero idealmente essere in grado
+> di:
+> 
+> 1. creare un progetto su [GitLab][gitlab] / [EMBL GitLab][embl-gitlab].
+> 1. clonare una copia locale di un progetto con Git, aggiungere e fare il commit dei
+>    file modificati e fare il push/pull delle modifiche tra i repository locali e
+>    remoti.
+> 1. eseguire comandi nella shell.
+> 
+> Nessuno dei prerequisiti sopra elencati è assolutamente necessario per seguire la
+> lezione. Tuttavia, saranno necessari per gestire in modo efficiente lo sviluppo del
+> sito web dal proprio portatile e per testarne l'aspetto prima di creare versioni
+> ufficiali.
+> 
+> Se volete imparare una qualsiasi delle abilità elencate sopra, le lezioni di [Software
+> Carpentry][swc] su [the Shell][swc-shell] e [Git][swc-git] sono un buon punto di
+> partenza.
+> 
 {: .prereq }
 
-For those already familiar with the ways that Git
-and an online platform like GitLab or GitHub
-can help them track and compare changes to flat text files
-and collaborate with others on projects,
-__GitLab__ (and GitHub) __Pages__ provide a cost-free way to
-build and host webpages.
-This approach is commonly used to provide documentation
-on software projects,
-and to create blogs and websites for
-individuals and organisations already used to working with
-the Git toolset for their other projects.
-However, for those taking their first steps towards building sites like this,
-the process can be confusing and intimidating.
-This tutorial aims to address this,
-by
-1. providing a step-by-step guide to creating a collection of pages,
-1. showing multiple examples of how to structure them into a coherent site,
-1. demostrating how to use multiple frameworks for web pages development, from plain _HTML_ to _Jekyll_ and _Sphinx_.
+Per coloro che hanno già familiarità con i modi in cui Git e una piattaforma online come
+GitLab o GitHub possono aiutare a tracciare e confrontare le modifiche ai file di testo
+e a collaborare con altri progetti, __GitLab__ (e GitHub) __Pages__ forniscono un modo
+gratuito per costruire e ospitare pagine web. Questo approccio è comunemente usato per
+fornire documentazione sui progetti software e per creare blog e siti web per individui
+e organizzazioni già abituati a lavorare con gli strumenti Git per i loro altri
+progetti. Tuttavia, per coloro che muovono i primi passi verso la creazione di siti di
+questo tipo, il processo può risultare confuso e intimidatorio. Questo tutorial si
+propone di risolvere questo problema
+1. fornisce una guida passo-passo alla creazione di una raccolta di pagine,
+1. mostra esempi multipli di come strutturarli in un sito coerente,
+1. dimostrazione di come usare diversi framework per lo sviluppo di pagine web, dal
+   semplice _HTML_ a _Jekyll_ e _Sphinx_.
 
-The difference between GitLab and GitHub pages development will also be briefly discussed.
+Verrà anche discussa brevemente la differenza tra lo sviluppo di pagine GitLab e GitHub.
 
-> ## Outdated Screenshots
->
-> Throughout this lesson we will make use and show content and screenshots from [git.embl.de](https://git.embl.de/).
-> As an ever evolving platform, GitLab is always adding new features
-> and new visual elements to its website.
-> **Screenshots** in the lesson may then become out-of-sync, refer or show content that no longer exists.
->
-> If during the lesson you find **screenshots** that no longer match what you see in your browser,
-> please [open an issue](https://git.embl.de/grp-bio-it-workshops/building-websites-with-gitlab/-/issues)
-> describing what you see and how it differs from the lesson content.
-> Feel free to add as many screenshots as necessary to clarify the discrepancy.
+> ## Schermate non aggiornate
+> 
+> In questa lezione utilizzeremo e mostreremo contenuti e schermate di
+> [git.embl.de](https://git.embl.de/). Essendo una piattaforma in continua evoluzione,
+> GitLab aggiunge sempre nuove funzionalità e nuovi elementi visivi al suo sito web.
+> **Le schermate** della lezione potrebbero quindi risultare non sincronizzate, fare
+> riferimento o mostrare contenuti che non esistono più.
+> 
+> Se durante la lezione si trovano **screenshot** che non corrispondono più a ciò che si
+> vede nel browser, si prega di [aprire un
+> problema](https://git.embl.de/grp-bio-it-workshops/building-websites-with-gitlab/-/issues)
+> descrivendo ciò che si vede e come differisce dal contenuto della lezione. Sentitevi
+> liberi di aggiungere tutte le schermate necessarie per chiarire la discrepanza.
+> 
 {: .callout }
 
-> ## Learning Objectives
->
-> After following this lesson,
-> learners will be able to:
->
-> - __create__ formatted page content with _HTML_ or _Markdown_
-> - __configure__ their project to build and serve pages on GitLab
-> - __build__ a simple site to host content in plain _HTML_
-> - __build__ a coherent site with multiple pages using the _Jekyll_ or the _Sphinx_ framework
-> - __customise__ the layout and style of the pages on their site
->
+> ## Obiettivi di apprendimento
+> 
+> Dopo aver seguito questa lezione, gli studenti saranno in grado di:
+> 
+> - __creare__ contenuti di pagina formattati con _HTML_ o _Markdown_
+> - __configurare__ il proprio progetto per costruire e servire pagine su GitLab
+> - __costruire__ un semplice sito per ospitare contenuti in semplice _HTML_
+> - __costruire__ un sito coerente con più pagine usando il framework _Jekyll_ o
+>   _Sphinx_
+> - __personalizzare il layout e lo stile delle pagine del loro sito
+> 
 {: .objectives }
 
 [gitlab]: https://gitlab.com/
 [embl-gitlab]: https://git.embl.de/
 
 {% include links.md %}
+

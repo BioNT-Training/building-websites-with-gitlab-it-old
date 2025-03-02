@@ -1,94 +1,112 @@
 ---
-title: "GitLab Pages with Sphinx"
+title: Pagine GitLab con Sphinx
 teaching: 0
 exercises: 0
 questions:
-- "How do I publish web pages through GitLab and Sphinx?"
+- How do I publish web pages through GitLab and Sphinx?
 objectives:
-- "Publish reStructuredText files as HTML on the web with GitHub Pages"
+- Publish reStructuredText files as HTML on the web with GitHub Pages
 keypoints:
-- "Through Sphinx, GitLab serves pages are generated from `.rst` files"
+- Through Sphinx, GitLab serves pages are generated from `.rst` files
 ---
 
-[Sphinx](https://www.sphinx-doc.org/en/master/) is a tool to generate webpages or PDF, mainly designed to create a
-project documentation. It was originally created for the Python documentation, but it has excellent facilities for
-the documentation of software projects in a range of languages. Polyglot documentation systems might be very useful
-in case your project increases in complexity or number of collaborators, so take a note about this.
 
-In this chapter of the lesson we will use Python programming language. Even if this is not strictly necessary,
-we suggest you to familiarise with Python - as explaining it falls outside the purpose of this lesson.
-You can choose to do so by going through The Carpentries lesson
-[Programming with Python](https://swcarpentry.github.io/python-novice-inflammation/).
+[Sphinx](https://www.sphinx-doc.org/en/master/) è uno strumento per generare pagine web
+o PDF, progettato principalmente per creare la documentazione di un progetto. È stato
+originariamente creato per la documentazione di Python, ma dispone di ottime strutture
+per la documentazione di progetti software in una serie di lingue. I sistemi di
+documentazione poliglotta potrebbero essere molto utili nel caso in cui il vostro
+progetto aumenti di complessità o di numero di collaboratori, quindi prendete nota di
+questo aspetto.
 
-> ## Exercise: Documentation
-> In a group, have each member open one of the following packages' documentation
+In questo capitolo della lezione utilizzeremo il linguaggio di programmazione Python.
+Anche se non è strettamente necessario, vi suggeriamo di familiarizzare con Python,
+poiché la sua spiegazione esula dallo scopo di questa lezione. Si può scegliere di farlo
+seguendo la lezione di The Carpentries [Programming with
+Python](https://swcarpentry.github.io/python-novice-inflammation/).
+
+> ## Esercizio: Documentazione
+> In un gruppo, ogni membro deve aprire la documentazione di uno dei seguenti pacchetti
 > - [pytest](https://docs.pytest.org/en/latest/)
 > - [seaborn](https://seaborn.pydata.org/)
 > - [numpy](https://docs.scipy.org/doc/numpy/reference/)
 > - [scipy-cookbook](https://scipy-cookbook.readthedocs.io/)
 > - [scikit-learn](http://scikit-learn.org/stable/)
->
-> Discuss what the common components are, what is helpful about these
-> documentation sites, how they address the general concepts on documentation,
-> how they're similar and how they're different.
+> 
+> Discutere quali sono i componenti comuni, cosa c'è di utile in questi siti di
+> documentazione, come affrontano i concetti generali sulla documentazione, come sono
+> simili e come sono diversi.
+> 
 {: .challenge}
 
-While Jekyll converts Markdown files (`.md`) into HTML, Sphinx converts reStructureText files (`.rts`). While these two
-formats might seem very similar at a first glance, they were created for two different purposes: Markdown to write for
-the web, reStructuredText to write documentation.
-[This blog post](https://www.zverovich.net/2016/06/16/rst-vs-markdown.html) provides more insights about what this means
-in practice, the most important point that we would like to highlight in this context is that reStructuredText is
-well-suited for the conversion to PDF too. This makes it a useful tool also for the development of documents you may
-need both online and in paper copies, for example training materials or a meeting agenda.
+Mentre Jekyll converte i file Markdown (`.md`) in HTML, Sphinx converte i file
+reStructureText (`.rts`). Sebbene questi due formati possano sembrare molto simili a
+prima vista, sono stati creati per due scopi diversi: Markdown per scrivere per il web,
+reStructuredText per scrivere documentazione. [Questo post sul
+blog](https://www.zverovich.net/2016/06/16/rst-vs-markdown.html) fornisce ulteriori
+approfondimenti su cosa significa in pratica, il punto più importante che vorremmo
+sottolineare in questo contesto è che reStructuredText è adatto anche alla conversione
+in PDF. Questo lo rende uno strumento utile anche per lo sviluppo di documenti che
+possono essere necessari sia online che in copia cartacea, ad esempio materiali di
+formazione o l'agenda di una riunione.
 
-> ## Sphinx quickstart
-> In sake of clarity, the next steps of this chapter will only focus on Sphinx files that are relevant for the
-> HTML files generation. However, by installing Sphinx locally you can run the quickstart command to init a basic
-> Sphinx project. We highly recommend this option if you would like to further your understanding of how to document
-> with Sphinx. To this aim, we report here the necessary steps.
->
-> Your system probably has Sphinx already installed. Check if so by typing in your terminal:
->
->~~~
->sphinx-build --version
->~~~
->{: .language-bash }
->
->If it isn't, you will be able to installing by typing:
->
->~~~
->pip install -U sphinx
->~~~
->{: .language-bash }
->
->Or check more detailed installation instructions [here](https://www.sphinx-doc.org/en/master/usage/installation.html).
-> Once Sphinx is installed, we can run the quickstart command to get an overview of the minimal set of files that are
-necessary to build the documentation. The following command will create an empty repository and run this command there:
->
->~~~
->mkdir sphinx-quickstart-test
->cd sphinx-quickstart-test
->sphinx-quickstart
->...
+> ## Avvio rapido di Sphinx
+> Per chiarezza, i prossimi passi di questo capitolo si concentreranno solo sui file di
+> Sphinx che sono rilevanti per la generazione dei file HTML. Tuttavia, installando
+> Sphinx in locale, è possibile eseguire il comando quickstart per avviare un progetto
+> Sphinx di base. Si consiglia vivamente questa opzione se si desidera approfondire la
+> conoscenza di come documentare con Sphinx. A questo scopo, riportiamo di seguito i
+> passi necessari.
+> 
+> Probabilmente il vostro sistema ha già installato Sphinx. Verificate se è così
+> digitando nel vostro terminale:
+> 
+> ~~~
+> sphinx-build --version
+> ~~~
+> {: .language-bash }
+> 
+> Se non lo è, si potrà installare digitando:
+> 
+> ~~~
+> pip install -U sphinx
+> ~~~
+> {: .language-bash }
+> 
+> Oppure consultare istruzioni più dettagliate per l'installazione [qui]
+> (https://www.sphinx-doc.org/en/master/usage/installation.html). Una volta installato
+> Sphinx, si può eseguire il comando quickstart per avere una panoramica dell'insieme
+> minimo di file necessari per costruire la documentazione. Il comando seguente creerà
+> un repository vuoto e vi eseguirà questo comando:
+> 
+> ~~~
+> mkdir sphinx-quickstart-test
+> cd sphinx-quickstart-test
+> sphinx-quickstart
+> ...
 > Separate source and build directories (y/n) [n]:
->...
+> ...
 > Project name: My project
 > Author name(s): <Your name>
 > Project release []:
->...
+> ...
 > Project language [en]:
->~~~
->{: .language-bash }
->
->Several documents will be generated. Here an overview:
->
->![Sphinx quickstart](../fig/sphinx-quickstart.png){: .image-with-shadow width="600px" }
->
-> The files that are relevant to us in this context are the `index.rst` file - that is the equivalent of our `index.md`
-file in the example with Jekyll - and the `conf.py` file. This is why the lesson goes through them only.
+> ~~~
+> {: .language-bash }
+> 
+> Verranno generati diversi documenti. Ecco una panoramica:
+> 
+> ![Sphinx quickstart](../fig/sphinx-quickstart.png){: .image-with-shadow width="600px"
+> }
+> 
+> I file rilevanti in questo contesto sono il file `index.rst` - che è l'equivalente del
+> nostro file `index.md` nell'esempio con Jekyll - e il file `conf.py`. Per questo
+> motivo la lezione si sofferma solo su di essi.
+> 
 {: .callout}
 
-Create an empty project folder. Let's initialise our `index.rst` file in our project's root folder.
+Creare una cartella di progetto vuota. Inizializziamo il nostro file `index.rst` nella
+cartella principale del progetto.
 
 ~~~
 .. this is a comment, it is not rendered
@@ -101,14 +119,18 @@ Contents:
 .. toctree::
     :maxdepth: 2
 ~~~
+> 
 {: .language-markdown }
 
-It reports our project main heading, and then a table of contents through the "TOC tree". A numeric maxdepth option
-may be given (we initalised it at 2) to indicate the depth of the tree; by default, all levels are included. More about
-Toc tree at [this link](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html). In short, when
-adding *.rst files to our table of content, they should be listed here. Let's add a file to see how this works.
+riporta l'intestazione principale del progetto e poi l'indice dei contenuti attraverso
+l'"albero TOC". Si può dare un'opzione numerica maxdepth (noi l'abbiamo initalizzata a
+2) per indicare la profondità dell'albero; per impostazione predefinita, tutti i livelli
+sono inclusi. Per saperne di più sull'albero Toc consultare [questo
+link](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html). In
+breve, quando si aggiungono file *.rst alla nostra tabella dei contenuti, questi devono
+essere elencati qui. Aggiungiamo un file per vedere come funziona.
 
-Create a `about.rst` file, also in the main root folder, with the content:
+Creare un file `about.rst`, sempre nella cartella principale, con il contenuto:
 
 ~~~
 About
@@ -116,9 +138,10 @@ About
 
 Hello, this is the about page of my project.
 ~~~
+> 
 {: .language-markdown }
 
-Now let's add this file to the TOC tree by editing the `index.rst` file:
+Ora aggiungiamo questo file all'albero TOC modificando il file `index.rst`:
 
 ~~~
 .. this is a comment, it is not rendered
@@ -133,10 +156,12 @@ Contents:
 
     about.rst
 ~~~
+> 
 {: .language-markdown }
 
-That's it: our home page (generate with the `index.rst` file) will now link to the About page (`about.rst`). Next,
-let's write a minimal `conf.py` file, also in the root directory.
+Ecco fatto: la nostra home page (generata con il file `index.rst`) ora rimanda alla
+pagina About (`about.rst`). Quindi, scriviamo un file minimo `conf.py`, sempre nella
+cartella principale.
 
 ~~~
 # -- Project information -----------------------------------------------------
@@ -150,19 +175,25 @@ release = '1.0'
 
 html_theme = 'alabaster'
 ~~~
+> 
 {: .language-bash }
 
-For a full list of options that can be specified in this file, check the
-[documentation](https://www.sphinx-doc.org/en/master/usage/configuration.html).
+Per un elenco completo delle opzioni che possono essere specificate in questo file,
+consultare la
+[documentazione](https://www.sphinx-doc.org/en/master/usage/configuration.html).
 
-> ## Sphinx quickstart
-> Once again, having Sphinx locally installed will support you through the next stages. Indeed, you can build
-> your documentation website locally through the command `sphinx-build . build/` to be run in your root folder.
-> Once run, it will generate your output website in the `build/` folder. You can visualize it simply by opening the
-> `index.html` file through your favourite browser.
+> ## Avvio rapido di Sphinx
+> Ancora una volta, avere Sphinx installato localmente vi aiuterà nelle fasi successive.
+> Infatti, è possibile costruire il proprio sito web di documentazione localmente
+> attraverso il comando `sphinx-build . build/`, da eseguire nella cartella principale.
+> Una volta eseguito, genererà il sito web di output nella cartella `build/`. È
+> possibile visualizzarlo semplicemente aprendo il file `index.html` con il proprio
+> browser preferito.
+> 
 {: .callout}
 
-Also in this case, the `.gitlab-ci.yml` file is necessary to specify instructions for GitLab deployment. Fill it with:
+Anche in questo caso, il file `.gitlab-ci.yml` è necessario per specificare le
+istruzioni per la distribuzione in GitLab. Compilarlo con:
 
 ~~~
 pages:
@@ -175,17 +206,21 @@ pages:
     paths:
       - public
 ~~~
+> 
 {: .language-yaml }
 
-This script: specifies the container for our pipeline (Python, version 3.6), installs Sphinx through
-[Pip](https://pypi.org/project/pip/), run the command `sphinx-build` - that builds HTML files in the root folder (`.`)
-to a `public` folder that it also creates. Finally, it specifies where to find the HTML artifacts (in the `public`
-folder indeed).
+Questo script: specifica il contenitore per la nostra pipeline (Python, versione 3.6),
+installa Sphinx tramite [Pip](https://pypi.org/project/pip/), esegue il comando
+`sphinx-build` - che costruisce i file HTML nella cartella principale (`.`) in una
+cartella `public`, anch'essa creata. Infine, specifica dove trovare gli artefatti HTML
+(nella cartella `public` appunto).
 
-That's all set. Now we should once again follow the "Setting up a project" in the
-[introduction](https://grp-bio-it-workshops.embl-community.io/building-websites-with-gitlab/01-introduction/index.html)
-to set up a remote project in GitLab, set it as remote for our local folder with `git remote add origin <git URL>`,
-`git add . && git commit -m <message>` and then `git push -u`. Finally, monitor your pipeline execution and check the
-final result.
+È tutto pronto. Ora dovremmo seguire ancora una volta "Impostazione di un progetto"
+nell'[introduzione](https://grp-bio-it-workshops.embl-community.io/building-websites-with-gitlab/01-introduction/index.html)
+per impostare un progetto remoto in GitLab, impostandolo come remoto per la nostra
+cartella locale con `git remote add origin <git URL>`, `git add . && git commit -m
+<message>` e poi `git push -u`. Infine, monitorare l'esecuzione della pipeline e
+verificare il risultato finale.
 
 {% include links.md %}
+
